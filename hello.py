@@ -1,1 +1,4 @@
-hello 21122121
+import os
+
+for filename in os.listdir('./cmds'):
+    print(filename)
