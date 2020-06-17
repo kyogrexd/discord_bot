@@ -16,20 +16,20 @@ bot = commands.Bot(command_prefix='/')  #建置實體
 async def on_ready():
     print(">>bot is online<<")
 
-#事件處理 目前有BUG
-@bot.event
-async def on_member_join(member):
-    print(f'{member}join!')
-    print(jdata["CHAANEL"])
-    channel = bot.get_channel(int(jdata["CHAANEL"]))
-    await channel.send("2222222")
+# #事件處理 目前有BUG
+# @bot.event
+# async def on_member_join(member):
+#     print(f'{member}join!')
+#     print(jdata["CHAANEL"])
+#     channel = bot.get_channel(int(jdata["CHAANEL"]))
+#     await channel.send("加入")
     
-@bot.event
-async def on_member_remove(member):
-    print('leave!')
-    print(jdata["CHAANEL"])
-    channel = bot.get_channel(int(jdata["CHAANEL"]))
-    await channel.send("2222222")
+# @bot.event
+# async def on_member_remove(member):
+#     print('leave!')
+#     print(jdata["CHAANEL"])
+#     channel = bot.get_channel(int(jdata["CHAANEL"]))
+#     await channel.send("退出")
 
 # #指令
 # @bot.command()

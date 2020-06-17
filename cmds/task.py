@@ -27,7 +27,7 @@ class Task(Cog_Extension):
                 with open('setting.json',mode='r',encoding='utf8') as jfile:
                     jdata = json.load(jfile)
                 if(now_time == jdata['time']and self.counter == 0):
-                    await self.channel.send('Task Working!')
+                    await self.channel.send('指令時間到了!')
                     self.counter = 1
                     await asyncio.sleep(1)
                 else:

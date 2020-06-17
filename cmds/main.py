@@ -45,6 +45,90 @@ class Main(Cog_Extension):
     async def clear(self,ctx,num : int):
         await ctx.channel.purge(limit=num+1)
 
+
+    #隨機組隊
+    @commands.command()
+    async def rand_squad(self,ctx):
+        # ctx.guild 所在伺服器
+        # ctx.guild.members 列出所有成員清單
+        # 判斷成員在線狀態:
+        # if 成員狀態 == 在線:
+        #   就把該成員加到 list(online)中
+
+        #print(ctx.guild.members)
+
+        offline = []
+        for member in ctx.guild.members:
+            #print(member.status)
+            #await ctx.send(member)
+            # await ctx.send(member.status)
+            #print(type(member.status))
+            if str(member.status) == "offline" and member.bot == False:
+                offline.append(member.name)
+
+        #print(random.choices(offline,k=5))
+
+        random_offline = random.sample(offline,k=6) #sample 不重複 choices 會重複
+        # await ctx.send(random.sample(random_offline,k=2)
+        for squad in range(3):
+            list2 = random.sample(random_offline,k=2)
+            #print(list2)  
+            for name in list2:
+                random_offline.remove(name)
+                #print(name)
+            a = ','.join(list2)
+            await ctx.send(f"{squad+1}小隊:" + str(a))
+
+    @commands.command()
+    async def test(self,ctx):
+        print(ctx.guild.members)
+
+    
+    #group 群組
+    #subcommand子命令
+    @commands.group()
+    async def codetest(self,ctx):
+        # await ctx.send("group")
+        pass
+    @codetest.command()
+    async def python(self,ctx):
+        await ctx.send("python") 
+    @codetest.command()
+    async def java(self,ctx):
+        await ctx.send("java")    
+    @codetest.command()
+    async def cpp(self,ctx):
+        await ctx.send("cpp")   
+
+
+
+    @commands.command()
+    async def cmd1(sef,ctx,num):
+        await ctx.send(num)
+
+    @commands.command()
+    async def cmd2(sef,ctx,n:int):
+        await ctx.send(n)
+
+    @commands.command()
+    async def cmd3(self,ctx,num:int):
+        try:
+            await ctx.send(num)
+        except Exception as e:
+            await ctx.send(e)
+     
+
+
+           
+
+        
+        
+
+
+        
+        
+    
+
 #啟動bot.py時 這功能就會啟動
 #         是 bot.py 裡的 bot
 def setup(bot):
